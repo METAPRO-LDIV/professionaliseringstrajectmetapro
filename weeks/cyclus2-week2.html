@@ -1,0 +1,531 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZRL – Cyclus 2 – Week 2</title>
+  <meta name="description" content="Cyclus 2 – Week 2 – Impliciete ondersteuning" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    .visual-large{
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .visual-medium{
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .visual-small{
+      width: 100%;
+      max-width: 300px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .centered-block{
+      text-align: center;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .btn-space-top{
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    .btn-space-top-lg{
+      margin-top: 1.35rem;
+      display: inline-block;
+    }
+
+    .doc-btn{
+      margin-top: .5rem;
+      display: inline-block;
+    }
+
+    .doc-list li{
+      margin: .9rem 0;
+    }
+
+    .subsection--a .subsection-label,
+    .subsection--b .subsection-label,
+    .subsection--c .subsection-label,
+    .subsection--d .subsection-label{
+      font-size: 1.12rem;
+      font-weight: 800;
+      padding: .45rem .8rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .subsection--a .subsection-label{
+      background: #dbeafe;
+      color: #0a3f75;
+    }
+
+    .subsection--b .subsection-label{
+      background: #e0f2fe;
+      color: #075985;
+    }
+
+    .subsection--c .subsection-label{
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .subsection--d .subsection-label{
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .smaller-visual{
+      max-width: 420px;
+    }
+
+    .leerdagboek-btn{
+      margin-top: 1.6rem;
+      display: inline-block;
+    }
+
+    .solution-box{
+      margin-top: 1rem;
+    }
+
+    .solution-box summary{
+      cursor: pointer;
+      font-weight: 800;
+      padding: .75rem .95rem;
+      border-radius: 12px;
+      background: #f7fbff;
+      border: 1px solid rgba(11,92,171,0.18);
+      color: var(--brand-2);
+    }
+
+    .solution-box .details-body{
+      margin-top: .75rem;
+      padding: 1rem;
+      border-radius: 14px;
+      background: #fbfdff;
+      border: 1px dashed rgba(11,92,171,0.35);
+    }
+
+    .full-width-note{
+      margin-top: 1rem;
+    }
+
+    .wide-quote{
+      margin: 1rem 0 1.25rem;
+    }
+
+    .zoom-row{
+      display: grid;
+      grid-template-columns: 1.2fr .8fr;
+      gap: 1.25rem;
+      align-items: start;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .warning-box{
+      margin: 1rem 0 1.25rem;
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: #fff7f7;
+      border: 1px solid rgba(220,38,38,0.20);
+      border-left: 6px solid #dc2626;
+    }
+
+    .warning-box h4{
+      color: #b91c1c;
+      margin: 0 0 .45rem;
+    }
+
+    .examples-italic li{
+      font-style: italic;
+    }
+
+    .reflectie-docs-row{
+      display: grid;
+      grid-template-columns: 1.15fr .85fr;
+      gap: 1.25rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+
+    .reflectie-docs-row .visual-small{
+      max-width: 460px;
+    }
+
+    @media (max-width: 900px){
+      .zoom-row,
+      .reflectie-docs-row{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Spring naar inhoud</a>
+ </div>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-logos">
+          <img class="logo" src="../HOGENT-LOGO.png" alt="HOGENT logo">
+          <img class="logo" src="../LDIV-logo.png" alt="Research Centre for Learning in Diversity logo">
+        </div>
+        <div class="brand-text">
+          <p class="kicker">Cyclus 2</p>
+          <h1>Week 2 – Impliciete ondersteuning</h1>
+          <p class="subtitle">Van expliciet aanleren naar impliciet stimuleren in de klas</p>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Hoofdnavigatie">
+        <a class="navlink" href="../index.html">Intro</a>
+        <a class="navlink" href="cyclus2-week1.html">Cyclus 2 – Week 1</a>
+        <a class="navlink active" href="cyclus2-week2.html">Cyclus 2 – Week 2</a>
+        <a class="navlink" href="../index.html#overzicht">Overzicht</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="container">
+
+    <section class="hero-split">
+      <div class="hero-text">
+        <p class="hero-kicker">CYCLUS 2 – WEEK 2</p>
+        <h2>Impliciete ondersteuning</h2>
+        <p>⏱ Tijdsindicatie: <strong>max. 60 minuten</strong></p>
+
+        <div class="pillrow" aria-label="Snelle navigatie">
+          <a class="pill" href="#terugblik">Terugblik</a>
+          <a class="pill" href="#herhaling">Herhaling</a>
+          <a class="pill" href="#opzet">Opzet</a>
+          <a class="pill" href="#impliciet">Impliciete ondersteuning</a>
+          <a class="pill" href="#aan-de-slag">Aan de slag</a>
+          <a class="pill" href="#vooruitblik">Vooruitblik</a>
+        </div>
+
+        <p>Deze week nemen we de ondersteuningsvorm <strong>impliciete directe ondersteuning</strong> onder de loep.</p>
+      </div>
+    </section>
+
+    <section id="terugblik" class="card">
+      <h2>1. Even terugblikken</h2>
+
+      <section class="subsection subsection--a">
+        <p class="subsection-label">A. Overzicht</p>
+
+        <div class="image-inline">
+          <img src="../Spiegel.jpg" alt="Spiegel" class="image-inline__img">
+          <div class="image-inline__text">
+            <p><strong>Vorige week:</strong></p>
+            <ul class="checklist">
+              <li>kozen we een cluster met ZRL-vaardigheden uit, om met onze leerlingen de komende vier weken mee aan de slag te gaan,</li>
+              <li>Kozen we één werkvorm uit één van de vier inspiratiegidsen expliciete directe ondersteuning,</li>
+              <li>planden we hoe we deze werkvorm in ons klas zouden uitvoeren (voorbereidingsfase)</li>
+              <li>stonden we stil bij de uitvoering ervan</li>
+              <li>&amp; gingen we vol goede moed aan de slag met onze klas (uitvoeringsfase)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="subsection subsection--b">
+        <p class="subsection-label">B. Leerdagboek</p>
+
+        <div class="image-inline">
+          <img src="../online-leerdagboek.jpg" alt="Online leerdagboek" class="image-inline__img">
+          <div class="image-inline__text">
+            <p><strong>Deze week:</strong></p>
+            <ul class="checklist">
+              <li>staan we allereerst in ons leerdagboek stil bij hoe ons experiment gelopen is. Wat lukte goed? Wat lukte minder goed? Wat leren we hieruit? (reflectiefase)</li>
+              <li>zetten we onze motivatie voor de nieuwe week op scherp</li>
+              <li>en nemen we de volgende ondersteuningsvorm onder de loep.</li>
+            </ul>
+
+            <p>Ga nu eerst naar je leerdagboek via deze link (sla het eerst op jouw pc op voor je erin werkt) of via de bijlage bij de mail.</p>
+
+            <a class="btn leerdagboek-btn" href="../Leerdagboekcyclus2week2.docx" target="_blank" rel="noopener">Klik hier voor het leerdagboek</a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="herhaling" class="card">
+      <h2>2. Korte herhaling</h2>
+
+      <p>Vorige week hadden we het over expliciete directe ondersteuning. We exploreerden wat dit precies inhoudt, en gingen hiermee aan de slag in de klas. Kan jij volgende oefening correct invullen en zo je kennis opfrissen?</p>
+
+      <div class="callout">
+        <h4>Invuloefening</h4>
+        <p>Kies uit de volgende woorden: Expliciete, taal, waarom, aangeleerd, hoe, voorstellingsvermogen, wat en wanneer</p>
+
+        <div class="image-inline">
+          <img src="../invullen.png" alt="Invuloefening expliciete ondersteuning" class="image-inline__img visual-medium">
+          <div class="image-inline__text">
+            <p>Expliciete ondersteuning gaat over het expliciet verwoorden van 1. ……………………….., 2………………………., 3…………………….. en 4……………………….. van een ZRL vaardigheid.</p>
+            <p>Automatiseren van een vaardigheid kan pas wanneer een vaardigheid eerst is 5. ……………… via o.a. 6. …………………….. ondersteuning.</p>
+            <p>Expliciete ondersteuning geeft 7. ……………………… aan de ZRL vaardigheden. Dit laat het begrijpen van, denken en praten over de ZRL vaardigheden mogelijk.</p>
+            <p>Doorheen de werkvormen poogden we ook het 8. ……………………………… van de leerlingen aan te wakkeren. De werkvormen lieten leerlingen eerst samen nadenken over een ZRL-vaardigheid en hoe ze dit bij zichzelf reeds ervoeren, om daarna het overzicht te bieden via het expliciteren ervan.</p>
+          </div>
+        </div>
+
+        <details class="solution-box">
+          <summary>Klik hier voor de oplossing</summary>
+          <div class="details-body">
+            <p><strong>Antwoorden:</strong></p>
+            <ul class="checklist">
+              <li>1 t.e.m. 4: Wat, Waarom, Wanneer, Hoe</li>
+              <li>5. Aangeleerd.</li>
+              <li>6. Expliciete</li>
+              <li>7. Taal</li>
+              <li>8. voorstellingsvermogen</li>
+            </ul>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="opzet" class="card">
+      <h2>3. Vooruitkijken – opzet van de week</h2>
+
+      <p>Deze week nemen we de ondersteuningsvorm <strong>‘impliciete directe ondersteuning’</strong> onder de loep.</p>
+      <p>We stonden reeds stil bij vorige week (reflectie week 1).</p>
+      <p>Nu gaan we dieper in op</p>
+
+      <ul class="checklist">
+        <li>WAT impliciete ondersteuning is,</li>
+        <li>WAAROM dit belangrijk is,</li>
+        <li>HOE we hiermee aan de slag kunnen in ons klas,</li>
+        <li>BEREIDEN we dit VOOR (voorbereidingsfase) &amp;;</li>
+        <li>VOEREN we dit uit in onze klas (uitvoeringsfase)</li>
+      </ul>
+
+      <div class="centered-block">
+        <img src="../week2cyclus2.png" alt="Opzet van week 2 cyclus 2" class="visual-large">
+      </div>
+    </section>
+
+    <section id="impliciet" class="card">
+      <h2>4. Impliciete ondersteuning</h2>
+
+      <div class="centered-block">
+        <img src="../impliciet2.png" alt="Impliciete ondersteuning" class="visual-medium">
+      </div>
+
+      <section class="subsection subsection--a">
+        <p class="subsection-label">A. Korte teaser</p>
+
+        <div class="stacked-visual">
+          <img src="../stripweek2.jpg" alt="Strip over impliciete ondersteuning" class="visual-large">
+        </div>
+
+        <div class="section-intro">
+          <p>Deze leerkracht maakt een fout die jullie wellicht niet maken. Los daarvan maakt iedereen wel eens een fout. Dat <strong>fouten bij leren hoort</strong> en niet het einde van de wereld is, is een <strong>belangrijke les</strong> voor leerlingen. Kinderen pikken daarbij vaak nog meer op van wat we doen dan van wat we zeggen, zeker als die twee tegenstrijdig zijn.</p>
+          <p>De juf in het voorbeeld mag nog 100 maal zeggen dat fouten maken niet erg is, ze toont in dit moment het omgekeerde én dat zal vaker blijven hangen.</p>
+          <p><strong>Practice what you preach</strong> dus! Onze <strong>modelfunctie</strong> valt niet te onderschatten.</p>
+          <p>Modelleren is één manier om aan impliciete ondersteuning te doen. We bekijken hieronder wat hier nog allemaal onder valt, en gaan daarna zelf aan de slag.</p>
+        </div>
+
+        <p class="note full-width-note"><em>Wist-je-datje: Een open houding tegenover fouten, samen met het reflecteren erover draagt bij aan diepgaand leren en sterkere ZRL-vaardigheden. Fouten normaliseren en bespreken in een veilige omgeving doen motivatie en zelfinzicht groeien (Leerpunt, 2026)</em></p>
+      </section>
+
+      <section class="subsection subsection--b">
+        <p class="subsection-label">B. Impliciete ondersteuning: wat en waarom?</p>
+
+        <p>Impliciete ondersteuning hoort samen met expliciete ondersteuning tot de directe ondersteuning van zelfregulerend leren.</p>
+        <p><strong>Enkele aandachtspunten:</strong></p>
+        <ul class="checklist">
+          <li>Beide vormen komen best <strong>geïntegreerd in de lessen</strong> aan bod, verbonden aan de leerstof.</li>
+          <li>Leerlingen moeten <strong>eerst expliciete directe ondersteuning</strong> krijgen vooraleer ze baat kunnen hebben bij impliciete directe ondersteuning.</li>
+          <li>Een <strong>goede balans vinden</strong> tussen het aanbieden van deze twee vormen, afgestemd op wat leerlingen al kennen en kunnen, is belangrijk om de ZRL-vaardigheden goed aan te leren, om ze daarna te kunnen inoefenen in een leercontext die dit verder bevordert. (Consortium Mozaïc, 2025; Leerpunt, 2026)</li>
+        </ul>
+
+        <div class="centered-block">
+          <img src="../aanlerenvsautomatiseren.png" alt="Aanleren versus automatiseren" class="visual-large">
+        </div>
+
+        <p class="quote wide-quote">“Impliciete instructie is als het toevoegen van groenten aan een pastasaus. Het blijft pasta, maar de voedingswaarde neemt toe”. (Last en Branson, 2025)<br>En nee, het wordt niet per sé lekkerder, enkel voedzamer.</p>
+
+        <p>Niet alles hoeft altijd expliciet benoemd te worden, impliciet stimuleren heeft ook een enorme meerwaarde!</p>
+        <p><strong>Maar hoe doen we dit nu?</strong></p>
+        <p>Men spreekt van impliciet voordoen, uitleggen, verzoeken &amp; bevragen (Consortium Mozaïc, 2025; Leerpunt, 2026).</p>
+
+        <div class="warning-box">
+          <h4>Opgelet</h4>
+          <p>Je kan uiteraard ook expliciet voordoen, uitleggen, verzoeken en bevragen, wanneer je de WWWH er expliciet bij benoemt. Bij impliciete ondersteuning gaan we dit niet doen. We kunnen <strong>wel verwijzen naar de expliciete ondersteuning</strong> die al aan bod kwam. De <strong>buzz-woorden of leerlingentaal rond de ZRL-vaardigheid</strong> kan leerlingen triggeren, zonder dat het allemaal opnieuw expliciet moet uitgelegd worden.</p>
+        </div>
+      </section>
+
+      <section class="subsection subsection--c">
+        <p class="subsection-label">C. Vier manieren om aan impliciete ondersteuning te doen</p>
+
+        <div class="zoom-row">
+          <div>
+            <p>We zoomen even in op de 4 manieren om impliciet te ondersteunen. Om het verschil tussen de 4 manieren of vormen uit de literatuur goed te kaderen hebben we de vrijheid genomen deze iets anders te formulieren. 
+            We spreken van 
+              <ul class="checklist">
+                <li>1. Modelleren of zelf de vaardigheid laten zien </li> 
+                <li>2. Hardop denken of het denkproces modelleren </li>
+                <li>3. Aanmoedigen om de vaardigheid te gebruiken of herinneren aan de vaardigheid </li>
+                <li>4. Bevragen of aan het denken zetten</li>
+          </div>
+          <div>
+            <img src="../inzoomen.jpg" alt="Inzoomen op impliciete ondersteuning" class="visual-small">
+          </div>
+        </div>
+
+        <div class="w-section">
+          <h3 class="w-title">1. Modelleren of zelf de vaardigheid laten zien</h3>
+          <p>Bij voordoen <strong>modelleert</strong> de leerkracht of laat de leerkracht de ZRL- vaardigheid zien <strong>in zijn handelen</strong>.</p>
+          <p><em>Enkele voorbeelden:</em></p>
+          <ul class="checklist examples-italic">
+            <li>De leerkracht doet voor hoe je een aantal begrippen best instudeert.</li>
+            <li>De leerkracht schrijft het lesdoel op het bord</li>
+            <li>De leerkracht noteert bij de les een onthoudbubbel gelinkt aan het hoofddoel van de les.</li>
+          </ul>
+        </div>
+
+        <div class="w-section">
+          <h3 class="w-title">2. Hardop denken of het denkproces modelleren</h3>
+          <p></p>De leerkracht verwoordt diens <strong>denkproces</strong> bij het gebruiken van een ZRL-vaardigheid luidop of <strong>hardop</strong>.</p>
+          <p><em>Enkele voorbeelden:</em></p>
+          <ul class="checklist examples-italic">
+            <li>De leerkracht verwoordt stap voor stap hoe je een grote opdracht in stappen opdeelt of het studeren voor een toets inplant.</li>
+            <li>De leerkracht verwoordt stap voor stap het controleren of een oefening wel juist kan zijn.</li>
+            <li>De leerkracht verwoordt luidop hoe hij zich motiveert bij een uitdagende oefening.</li>
+          </ul>
+        </div>
+
+        <div class="w-section">
+          <h3 class="w-title">3. Aanmoedigen om de vaardigheid te gebruiken of herinneren aan de vaardigheid</h3>
+          <p></p>De leerkracht <strong>moedigt</strong> de leerling <strong>aan</strong> de ZRL vaardigheid te gebruiken of <strong>herinnert</strong> de leerling aan de ZRL vaardigheid. Hierbij kan verwezen worden naar een voorafgaande expliciete instructie.</p>
+          <p><em>Enkele voorbeelden:</em></p>
+          <ul class="checklist examples-italic">
+            <li>De leerkracht herinnert de leerling eraan alle nodige materialen klaar te leggen.</li>
+            <li>De leerkracht moedigt de leerling die aangeeft iets niet te begrijpen aan om een gerichte hulpvraag te stellen.</li>
+            <li>De leerkracht moedigt de leerlingen aan na te denken over hoe ze de leerstof zullen instuderen.</li>
+          </ul>
+        </div>
+
+        <div class="w-section">
+          <h3 class="w-title">4. Bevragen of aan het denken zetten</h3>
+          <p>Bij bevragen <strong>bevraagt</strong> de leerkracht <strong>de leerlingen</strong> over het gebruik van de ZRL vaardigheid en <strong>zet de leerlingen aan het denken.</strong></p>
+          <p><em>Enkele voorbeelden:</em></p>
+          <ul class="checklist examples-italic">
+            <li>De leerkracht bevraagt de leerlingen hoeveel tijd ze zouden nodig hebben om iets in te studeren/ een opdracht te maken.</li>
+            <li>De leerkracht bevraagt wat er allemaal moet gebeuren om een opdracht succesvol te voltooien.</li>
+            <li>De leerkracht bevraagt welke strategieën de leerlingen zullen gebruiken om te studeren voor de toets.</li>
+          </ul>
+        </div>
+
+        <p class="note full-width-note"><em>Wist-je-datje: Wie meer taalvaardig is, is beter in staat is om taal te geven aan zijn eigen functioneren en aan zijn omgeving en heeft meer handvaten voor zelfregulatie. Taal is een belangrijk voertuig voor zelfinzicht en zelfregulatie. Het begeleiden van de ontplooiing van de taal- en denkvaardigheden zoals kritisch denken, oordelen, kiezen, argumenteren, ... is dus super belangrijk. (Jolles in Drok et al, 2024)</em></p>
+
+        <p>Het hardop denken, aanmoedigen, herinneren en bevragen draagt duidelijk bij tot wat men noemt metacognitieve gesprekken in de klas en het opbouwen van een woordenschat/taal rond zelfregulerend leren.</p>
+      </section>
+
+      <section class="subsection subsection--d">
+        <p class="subsection-label">D. Planning: wanneer en hoe?</p>
+
+        <div class="image-inline">
+          <img src="../Video.jpg" alt="Home video" class="image-inline__img visual-medium">
+          <div class="image-inline__text">
+            <p>Voorgaande gaf zicht op wat impliciete ondersteuning zoal kan inhouden in een lessituatie. De leerkracht staat daarbij centraal en neemt ‘the lead’ door ZRL aan bod te brengen, door wat je doet, zegt, verzoekt of bevraagt.</p>
+
+            <p>Hoe gaan wij hier nu mee aan de slag deze week? Griet en Nathalie voorzagen deze keer geen gids maar een reflectiedocument om zelf mee aan de slag te gaan, en in overleg te gaan met je collega.</p>
+            <p>We laten je stil staan bij wat je impliciet al doet rond de gekozen ZRL-vaardigheden, en wat er mogelijks nog niet gebeurt, waar kansen liggen?</p>
+
+            <p>Klinkt mysterieus.</p>
+
+            <p>Griet en Nathalie leggen het terug graag uit in een nieuwe home video.</p>
+
+            <a class="btn btn-space-top-lg" href="https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=bbdf2472-efa2-4b2b-a95f-b43c01110592" target="_blank" rel="noopener">
+              Klik hier voor de video!
+            </a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="aan-de-slag" class="card">
+      <h2>5. Aan de slag</h2>
+
+      <p>1. Deze week reflecteer je eerst over de mate waarin jij impliciet ondersteunt m.b.t. de door jouw gekozen ZRL-vaardigheden (Je blijft verder inzetten op dezelfde cluster(s) aan ZRL-vaardigheden voor deze vier weken).</p>
+      <p>Download het reflectieformulier dat aansluit bij jouw cluster en vul het individueel in.</p>
+      <p>2. Klik vervolgens opnieuw je leerdagboek open en bereid eerst dat stukje voor waarover je net reflecteerde.</p>
+      <p>3. Ga aan de slag in je klas en school. Volg hierbij de stappen in het reflectieformulier.</p>
+      <p>4. Ga vervolgens in gesprek met een collega (jouw buddy of een andere collega)</p>
+
+      <div class="callout">
+        <h4>Hieronder vind je alle documenten</h4>
+
+        <div class="reflectie-docs-row">
+          <div>
+            <p><strong>Reflectieformulieren</strong></p>
+
+            <ul class="checklist doc-list">
+              <li>Taakanalyse en zelfmotivatie (groene cluster, voorbereidingsfase)
+                <br><a class="btn doc-btn" href="../Reflectieformulier1.pdf" target="_blank" rel="noopener">Klik hier</a>
+              </li>
+              <li>Zelf-controle (roze cluster, uitvoeringsfase)
+                <br><a class="btn doc-btn" href="../Reflectieformulier2.pdf" target="_blank" rel="noopener">Klik hier</a>
+              </li>
+              <li>Zelf-observatie (roze cluster, uitvoeringsfase)
+                <br><a class="btn doc-btn" href="../Reflectieformulier3.pdf" target="_blank" rel="noopener">Klik hier</a>
+              </li>
+              <li>Zelf-beoordeling en zelf-reactie (blauwe cluster, reflectiefase)
+                <br><a class="btn doc-btn" href="../Reflectieformulier4.pdf" target="_blank" rel="noopener">Klik hier</a>
+              </li>
+            </ul>
+          </div>
+
+          <div>
+            <img src="../keuzeclusters.png" alt="Keuzeclusters" class="visual-small">
+          </div>
+        </div>
+      </div>
+
+      <div class="image-inline">
+        <img src="../online-leerdagboek.jpg" alt="Online leerdagboek" class="image-inline__img">
+        <div class="image-inline__text">
+          <p>Leerdagboek: klik hier</p>
+          <a class="btn leerdagboek-btn" href="../Leerdagboekcyclus2week2.docx" target="_blank" rel="noopener">Klik hier</a>
+        </div>
+      </div>
+    </section>
+
+    <section id="vooruitblik" class="card">
+      <h2>6. Vooruitblik</h2>
+
+      <p>Deze week ga je in je klas aan de slag rond impliciete ondersteuning. Volgende week, in week 3, bekijken we hoe dit verlopen is (reflectie week 2). We gaan dan verder in op de derde ondersteuningsvorm, namelijk indirecte ondersteuning, om die opnieuw voor te bereiden en uit te voeren!</p>
+      <p>Tot dan!</p>
+    </section>
+
+    <p>Bronnen</p>
+    <ul class="checklist">
+      <li>Leerpunt. (2026). Leidraad Metacognitie en zelfregulerend leren. https://leerpunt.be/files/leidraden/leerpunt-leidraad-metacognitie-en-zrl-v202603.pdf</li>
+      <li>Drok, H., Kneyber, R. &amp; Devid, V. (Eds). (2024). ReguLEER! Een pedagogisch-didactische verkenning van zelfregulerend leren. TELOS Uitgevers.</li>
+      <li>Last, B. &amp; Bransen, D. (2025). Dat doe je toch niet alleen?! Van zelfregulerend leren naar samen (regu)leren. Boom.</li>
+    </ul>
+
+    <footer class="footer">
+      <p class="note">© Traject ZRL – HOGENT </p>
+    </footer>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>

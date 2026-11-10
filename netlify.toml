@@ -1,0 +1,11 @@
+[[redirects]]
+  from = "/*"
+  status = 200
+  force = true
+  conditions = {Role = ["member"]}
+
+[[redirects]]
+  from = "/*"
+  to = "/login"
+  status = 401
+  force = true

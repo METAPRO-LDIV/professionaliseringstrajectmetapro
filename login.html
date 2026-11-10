@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Aanmelden - Pilootdesign 2026</title>
+
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f5f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+      margin: 0;
+    }
+
+    .login-box {
+      background: white;
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.12);
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+    }
+
+    h1 {
+      margin-top: 0;
+    }
+
+    p {
+      line-height: 1.5;
+    }
+
+    .google-button {
+      width: 100%;
+      padding: 14px;
+      margin-top: 20px;
+      border: 1px solid #ccc;
+      border-radius: 6px;
+      background: white;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    .google-button:hover {
+      background: #f5f5f5;
+    }
+
+    #message {
+      margin-top: 18px;
+      font-size: 14px;
+    }
+  </style>
+</head>
+
+<body>
+
+<div class="login-box">
+
+  <h1>Aanmelden</h1>
+
+  <p id="intro">
+    Dit leerpad is enkel toegankelijk voor uitgenodigde deelnemers.
+  </p>
+
+  <button id="googleLogin" class="google-button">
+    Aanmelden met Google
+  </button>
+
+  <p id="message"></p>
+
+</div>
+
+<script type="module">
+
+  import {
+    oauthLogin,
+    handleAuthCallback,
+    getUser
+  } from "https://esm.sh/@netlify/identity";
+
+
+  const message =
+    document.getElementById("message");
+
+  const intro =
+    document.getElementById("intro");
+
+  const googleButton =
+    document.getElementById("googleLogin");
+
+
+  /*
+   * Controleer eerst of iemand terugkomt
+   * van Google of via een uitnodigingslink.
+   */
+  try {
+
+    const result =
+      await handleAuthCallback();
+
+
+    /*
+     * Terugkeer van Google:
+     * gebruiker is aangemeld.
+     */
+    if (result?.user) {
+
+      window.location.href = "/";
+
+    }
+
+
+    /*
+     * De gebruiker heeft op de
+     * uitnodigingslink geklikt.
+     */
+    if (result?.type === "invite") {
+
+      intro.textContent =
+        "Je bent uitgenodigd voor het leerpad. Meld je hieronder aan met het Google-account dat bij dit e-mailadres hoort.";
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+
+  /*
+   * Controleer of er al een geldige
+   * Google/Netlify-sessie bestaat.
+   */
+  try {
+
+    const user =
+      await getUser();
+
+    if (user) {
+
+      window.location.href = "/";
+
+    }
+
+  } catch (error) {
+
+    console.error(error);
+
+  }
+
+
+  /*
+   * Aanmelden via Google
+   */
+  googleButton.addEventListener(
+    "click",
+    () => {
+
+      message.textContent =
+        "Je wordt doorgestuurd naar Google...";
+
+      oauthLogin("google");
+
+    }
+  );
+
+</script>
+
+</body>
+</html>

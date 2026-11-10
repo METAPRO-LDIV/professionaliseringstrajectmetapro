@@ -1,0 +1,571 @@
+
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>ZRL – Cyclus 2 – Week 4</title>
+  <meta name="description" content="Cyclus 2 – Week 4 – Transfer" />
+  <link rel="stylesheet" href="../assets/css/styles.css" />
+  <style>
+    .visual-large{
+      width: 100%;
+      max-width: 780px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .visual-medium{
+      width: 100%;
+      max-width: 460px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .visual-small{
+      width: 100%;
+      max-width: 320px;
+      margin: 0 auto;
+      display: block;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+    }
+
+    .centered-block{
+      text-align: center;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .btn-space-top{
+      margin-top: 1rem;
+      display: inline-block;
+    }
+
+    .btn-space-top-lg{
+      margin-top: 1.35rem;
+      display: inline-block;
+    }
+
+    .doc-btn{
+      margin-top: .6rem;
+      display: inline-block;
+    }
+
+    .doc-list li{
+      margin: .9rem 0;
+    }
+
+    .subsection--a .subsection-label,
+    .subsection--b .subsection-label,
+    .subsection--c .subsection-label,
+    .subsection--d .subsection-label{
+      font-size: 1.12rem;
+      font-weight: 800;
+      padding: .45rem .8rem;
+      border-radius: 12px;
+      display: inline-block;
+    }
+
+    .subsection--a .subsection-label{
+      background: #dbeafe;
+      color: #0a3f75;
+    }
+
+    .subsection--b .subsection-label{
+      background: #e0f2fe;
+      color: #075985;
+    }
+
+    .subsection--c .subsection-label{
+      background: #dcfce7;
+      color: #166534;
+    }
+
+    .subsection--d .subsection-label{
+      background: #fef3c7;
+      color: #92400e;
+    }
+
+    .solution-box{
+      margin-top: 1rem;
+    }
+
+    .solution-box summary{
+      cursor: pointer;
+      font-weight: 800;
+      padding: .75rem .95rem;
+      border-radius: 12px;
+      background: #f7fbff;
+      border: 1px solid rgba(11,92,171,0.18);
+      color: var(--brand-2);
+    }
+
+    .solution-box .details-body{
+      margin-top: .75rem;
+      padding: 1rem;
+      border-radius: 14px;
+      background: #fbfdff;
+      border: 1px dashed rgba(11,92,171,0.35);
+    }
+
+    .wide-quote{
+      margin: 1rem 0 1.25rem;
+    }
+
+    .warning-box{
+      margin: 1rem 0 1.25rem;
+      padding: 1rem 1.1rem;
+      border-radius: 16px;
+      background: #fff7f7;
+      border: 1px solid rgba(220,38,38,0.20);
+      border-left: 6px solid #dc2626;
+    }
+
+    .warning-box h4{
+      color: #b91c1c;
+      margin: 0 0 .45rem;
+    }
+
+    .two-col-visual{
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin: 1rem 0 1.25rem;
+      align-items: start;
+    }
+
+    .three-col-visual{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 1.25rem;
+      align-items: start;
+    }
+
+    .reflection-cards{
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+      margin: 1rem 0 1.25rem;
+    }
+
+    .reflection-card{
+      background: #ffffff;
+      border: 1px solid rgba(229,231,235,0.95);
+      border-radius: 16px;
+      padding: 1rem;
+      box-shadow: 0 10px 25px rgba(2,6,23,0.04);
+    }
+
+    .docs-row{
+      display: grid;
+      grid-template-columns: 1.1fr .9fr;
+      gap: 1.25rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+
+    .docs-row .visual-small{
+      max-width: 420px;
+    }
+
+    @media (max-width: 900px){
+      .two-col-visual,
+      .three-col-visual,
+      .reflection-cards,
+      .docs-row{
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip-link" href="#content">Spring naar inhoud</a>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="brand-logos">
+          <img class="logo" src="../HOGENT-LOGO.png" alt="HOGENT logo">
+          <img class="logo" src="../LDIV-logo.png" alt="Research Centre for Learning in Diversity logo">
+        </div>
+        <div class="brand-text">
+          <p class="kicker">Cyclus 2</p>
+          <h1>Week 4 – Transfer</h1>
+          <p class="subtitle">Van oefenen in één context naar bewust inzetten in een andere context</p>
+        </div>
+      </div>
+
+      <nav class="topnav" aria-label="Hoofdnavigatie">
+        <a class="navlink" href="../index.html">Intro</a>
+        <a class="navlink" href="cyclus2-week1.html">Cyclus 2 – Week 1</a>
+        <a class="navlink" href="cyclus2-week2.html">Cyclus 2 – Week 2</a>
+        <a class="navlink" href="cyclus2-week3.html">Cyclus 2 – Week 3</a>
+        <a class="navlink active" href="cyclus2-week4.html">Cyclus 2 – Week 4</a>
+        <a class="navlink" href="../index.html#overzicht">Overzicht</a>
+      </nav>
+    </div>
+  </header>
+
+  <main id="content" class="container">
+
+    <section class="hero-split">
+      <div class="hero-text">
+        <p class="hero-kicker">CYCLUS 2 – WEEK 4</p>
+        <h2>Transfer</h2>
+        <p>⏱ Tijdsindicatie: <strong>max. 60 minuten</strong></p>
+
+        <div class="pillrow" aria-label="Snelle navigatie">
+          <a class="pill" href="#terugblik">Terugblik</a>
+          <a class="pill" href="#herhaling">Herhaling</a>
+          <a class="pill" href="#opzet">Opzet</a>
+          <a class="pill" href="#transfer">Transfer</a>
+          <a class="pill" href="#aan-de-slag">Aan de slag</a>
+          <a class="pill" href="#vooruitblik">Vooruitblik</a>
+        </div>
+
+        <p>Deze week zoomen we in op de laatste ondersteuningsvorm: <strong>transfer</strong>.</p>
+      </div>
+    </section>
+
+    <section id="terugblik" class="card">
+      <h2>1. Even terugblikken</h2>
+
+      <section class="subsection subsection--a">
+        <p class="subsection-label">A. Overzicht</p>
+
+        <div class="image-inline">
+          <img src="../Spiegel.jpg" alt="Spiegel" class="image-inline__img">
+          <div class="image-inline__text">
+            <p><strong>Vorige week:</strong></p>
+            <ul class="checklist">
+              <li>Ontdekten we dat ZRL een teamsport is, waarbij de coach niet alleen (expliciet) uitlegt maar ook voordoet, aanmoedigt EN veelvuldige <span class="groen"><strong>oefenkansen</strong></span> creëert.</li>
+              <li>Leerden we dat oefenen kan ondersteund worden door</li>  <ul class="checklist">
+               <ul class="checklist"> <li><span class="groen"><strong>co-regulatie</strong></span>, leren van elkaar en samen aan de slag gaan</li>
+              <li>een vaste structuur en <span class="groen"><strong>routine</strong></span></li>
+              <li><span class="groen"><strong>feedback</strong></span> van coach en medeleerlingen;</li>
+              <li><span class="groen"><strong>tools</strong></span> of hulpmiddelen</li>
+                 </ul>
+              <li>Lieten we ons inspireren door mogelijkheden om indirect te ondersteunen, voortbouwend op de expliciete directe ondersteuning van week 1.</li>
+              <li>Werkten we een manier uit om onze leerlingen indirect te ondersteunen (voorbereidingsfase)</li>
+              <li>& gingen we – indien mogelijk - vol goede moed aan de slag met de leerlingen in onze klas (uitvoeringsfase)</li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <section class="subsection subsection--b">
+        <p class="subsection-label">B. Leerdagboek</p>
+
+        <div class="image-inline">
+          <img src="../online-leerdagboek.jpg" alt="Online leerdagboek" class="image-inline__img">
+          <div class="image-inline__text">
+            <p><strong>Deze week:</strong></p>
+            <ul class="checklist">
+              <li>staan we allereerst in ons leerdagboek stil bij hoe deze (uitwerking van) indirecte ondersteuning verlopen is. Wat lukte goed? Waar worstelden we nog mee? Wat leren we hieruit? (reflectiefase)</li>
+              <li>zetten we onze motivatie voor de nieuwe week scherp</li>
+              <li>en gaan we dieper in op die laatste stap, transfer!</li>
+            </ul>
+            <div class="centered-block">
+        <img src="../transferweek4.png" alt="Transfer week 4" class="visual-medium">
+      </div>
+
+            <p><strong></strong>Ga nu eerst naar je leerdagboek via deze link (sla het eerst op jouw pc op voor je erin werkt) of via de bijlage bij de mail.</strong></p>
+
+            <a class="btn btn-space-top-lg" href="../Leerdagboekweek4.docx" target="_blank" rel="noopener">
+              Klik hier voor het leerdagboek
+            </a>
+          </div>
+        </div>
+      </section>
+    </section>
+
+    <section id="herhaling" class="card">
+      <h2>2. Korte herhaling</h2>
+
+      <p>Deze week zetten we even in op distributed practice*. We herhalen namelijk nog even kort de essentie van alle ondersteuningsvormen die de voorbije weken aan bod kwamen (niet enkel van vorige week) in een korte oefening.</p>
+      <p>We bekijken vervolgens een aantal voorbeelden van klassituaties. Aan jullie om te kiezen welke soort ondersteuning dit is: <strong>expliciet, impliciet of indirect</strong>?</p>
+
+      <p class="note"><em>*Wist-je-datje: Distributed practice of spacing is een zeer effectieve leerstrategie. Door het oefenen meer te spreiden over de tijd heen onthoudt men het geleerde beter. Dit wordt vaak ingezet door in het begin van de les bvb. een korte quiz te doen waarin de kernboodschappen uit de lessen van even terug, aan bod komen.</em></p>
+
+      <div class="callout">
+        <h4>Quick recap of spiekbriefje</h4>
+        <ul class="checklist">
+          <li>Expliciet: WWWH van de vaardigheid (Wat, Waarom, Wanneer, Hoe)</li>
+          <li>Impliciet: modellen in handelen, luidop denken, aanmoedigen of herinneren en/of bevragen of aan het denken zetten.</li>
+          <li>Indirect: (veelvuldig) oefenen met ondersteuning door co-regulatie, routines, feedback en/of tools.</li>
+             <img src="../3OVklein.png" alt="Driehoek transfer" class="visual-small">
+        </ul>
+
+        <h4>Was het nu expliciet, impliciet of indirect???</h4>
+
+        <ol class="examples">
+          <li>Een leerkracht houdt een klasgesprek over gedachten die je motivatie soms doen dalen tijdens het leren, en hoe je hiermee kan omgaan. Er volgt een bespreking waarbij de leerkracht uitlegt waarom het belangrijk is om stil te staan bij je motivatie tijdens het leren, hoe je dit kan doen en wat je daarna kan ondernemen om je motivatie weer op te krikken.</li>
+          <li>Een leerkracht zet de doelen voor de les op het bord, en vinkt telkens af wanneer een onderdeel afgerond is.</li>
+          <li>Een leerkracht voorziet een feedbackkader op elke toets, waarop leerlingen kunnen aangeven op welke manier ze gestudeerd hebben. De leerlingen krijgen de verbeterde toets een weekje voor de nieuwe toets terug, en moeten reflecteren over hun studiemethode en wat ze eventueel anders zouden doen voor de nieuwe toets. Er volgt een klasgesprek over mogelijke manieren om dit thema te studeren.</li>
+          <li>De leerkracht laat de leerlingen hun ideale werkplek uittekenen. Er volgt een bespreking over waarom het belangrijk is om je leeromgeving goed in te richten, wanneer je dat kan inzetten, en waar je allemaal op moeten let om dit (voor jou) zo optimaal mogelijk te doen.</li>
+          <li>Een leerkracht voorziet een stopmomentje, elke keer wanneer de leerlingen zelfstandig een aantal oefeningen moeten maken. Tijdens dit stopmomentje krijgen de leerlingen een paar vragen om stil te staan bij hun aanpak van de oefening. Ze bespreken hun antwoorden met hun buur. De leerkracht geeft klassikaal nog wat feedback op wat hij ziet en hoort.</li>
+          <li>Een leerkracht praat zichzelf door een oefening heen (“ok, wat moeten we nu doen; wat hebben we nodig, wat is weer de volgende stap,...”).</li>
+          <li>Een leerkracht verwoordt luidop hoe die een schema opbouwt aan het bord, stap voor stap (“Ik plaats het onderwerp centraal’,…)</li>
+          <li>Een leerkracht eindigt elke les met een exit ticket, met daarop telkens een andere vraag zoals bvb. wat zijn de drie kernboodschappen van deze les, stel een toetsvraag op over deze les, duid op een schaal van 1 tot 10 aan hoe goed het concentreren liep,… Leerlingen wisselen hun antwoorden uit, waarna klassikale feedback volgt.</li>
+          <li>Een leerkracht laat de leerlingen elke keer er een herhalingstoets is een planning opmaken, met daarin ook hoe ze het studeren zullen aanpakken. De leerkracht voorziet een sjabloon dat hen daarin begeleidt. De leerlingen vergelijken hun planningen met elkaar en klassikale feedback volgt.</li>
+          <li>De leerkracht laat de leerlingen aan de hand van een situatieschets nadenken over de leerkuil en hoe je daar uit kan geraken. Er volgt een bespreking over het belang van geloven in jezelf om over het muurtje te kunnen springen en wanneer en hoe je dit geloven in jezelf kan proberen bevorderen.</li>
+          <li>Een leerkracht vraagt de leerlingen hoeveel tijd ze denken nodig te hebben voor het maken van een meerdelige opdracht en vraagt hen om bij elke opdracht hun minimum- en maximumtijd op te schrijven.</li>
+        </ol>
+
+        <details class="solution-box">
+          <summary>Klik hier voor de oplossing</summary>
+          <div class="details-body">
+            <p><strong>Antwoorden:</strong></p>
+            <p><strong>Expliciete ondersteuning:</strong> Bij voorbeelden 1, 4 en 10 wordt de WWWH verduidelijkt, vaak via of na een klasgesprek. De leerlingen oefenen het nog niet echt in.</p>
+            <p><strong>Impliciete ondersteuning:</strong> Bij voorbeelden 2, 6, 7, 11 ondersteunt de leerkracht door te modelleren in zijn handelen (voorbeeld 2) of luidop te denken (voorbeeld 6 &amp; 7) en door te bevragen en aan te moedigen aan tijdsbeheer te doen (voorbeeld 11).</p>
+            <p><strong>Indirecte ondersteuning:</strong> Bij voorbeelden 3, 5, 8, 9 zie je dat het om een routine gaat, waarbij men elke keer de ZRL-vaardigheid oefent volgens een vaste structuur. Ook co-regulatie door het inzetten van de klasgenoten, de inzet van een hulpmiddel of tool en feedback komt aan bod.</p>
+          </div>
+        </details>
+      </div>
+    </section>
+
+    <section id="opzet" class="card">
+      <h2>3. Vooruitkijken – opzet van de week</h2>
+
+      <p>Men zegt weleens:</p>
+      <ul class="checklist">
+        <li>Wie één balsport kan leert makkelijker een nieuwe balsport aan.</li>
+        <li>Wie een aantal vreemde talen kent, kan makkelijker er nog een nieuwe bijleren in vergelijking met wie er geen kent.</li>
+      </ul>
+
+      <p>Werkt dit ook zo voor ZRL? We hebben het deze week dus over <strong>TRANSFER</strong> van de ene situatie naar de andere situatie en wat dit betekent in de context van ZRL.</p>
+
+      <div class="centered-block">
+        <img src="../Overzichtweek4.png" alt="Overzicht week 4" class="visual-large">
+      </div>
+      
+      <p>We stonden reeds stil bij vorige week (zie reflectie week 3 in je leerdagboek) en gaan nu dieper in op de transfer:</p>
+      <ul class="checklist">
+        <li>WAT transfer is,</li>
+        <li>WAAROM dit belangrijk is,</li>
+        <li>HOE we dit kunnen bevorderen,</li>
+        <li>BEREIDEN we dit VOOR (voorbereidingsfase) &amp;</li>
+        <li>VOEREN we dit uit in onze klas (uitvoeringsfase)</li>
+      </ul>
+
+     
+    </section>
+
+    <section id="transfer" class="card">
+      <h2>4. Transfer</h2>
+
+      <div class="centered-block">
+        <img src="../transferweek4.png" alt="Transfer week 4" class="visual-medium">
+      </div>
+
+      <section class="subsection subsection--a">
+        <p class="subsection-label">A. Teaser</p>
+
+          <img src="../stripweek4.png" alt="Strip week 4" class="visual-large">
+        </div>
+
+        <p>De leerkracht in dit voorbeeld gaat een specifieke taakstrategie voor het lezen van een tekst gaan inoefenen met zijn leerlingen. Hij laat de leerlingen daarna nadenken over wanneer ze deze leesstrategie nog zouden kunnen gebruiken. Hij triggert dus al de transfer naar andere vakken.</p>
+
+        <p>Idealiter weten de leerkrachten Engels en geschiedenis bvb. dat deze leesstrategieën aangeleerd worden en hoe het gebeurt, zodat ze dit ook kunnen triggeren tijdens hun lessen.</p>
+
+        <p><strong>De vraag is echter</strong>:dienen ze deze strategie op dezelfde manier in te zetten als ze geschiedenis lezen en leren? Of zijn er toch subtiele verschillen? Kunnen leerlingen dit gewoon copy pasten naar een andere setting, of zit het toch nog iets ingewikkelder in elkaar?</p>
+
+        <p><strong>M.a.w., wat zijn de do’s en don’ts van transfer?</strong></p>
+      </section>
+
+     <section class="subsection subsection--b">
+  <p class="subsection-label">B. Transfer ondersteunen: wat en waarom?</p>
+
+  <div class="text-image-row">
+    <img src="../watweek4.png" alt="Wat is transfer" class="text-image-row__img">
+    <div>
+      <p>Transfer gaat over het transfereren of overdragen van het geleerde naar een andere context. Waar de vorige ondersteuningsvormen allemaal binnen dezelfde context plaatsvonden, gaat het nu over het overdragen naar een andere context.</p>
+
+      <p><strong>Wat kan er allemaal bedoeld worden met een andere context?</strong></p>
+      <p>Dit kan gaan over</p>
+
+      <ul class="checklist">
+        <li><strong>Een andere taak:</strong> van het plannen voor een groepsopdracht naar plannen voor het studeren.</li>
+        <li><strong>Een ander vak:</strong> bvb. van jezelf evalueren/controleren voor rekenen naar spelling OF van wiskunde naar Nederlands.</li>
+        <li><strong>De thuiscontext:</strong> bvb. van leren in de klas naar leren thuis.</li>
+        <li><strong>Een vrijetijdscontext:</strong> bvb. van je materiaal verzamelen in de klas naar het meenemen van alle benodigdheden voor de dansles.</li>
+      </ul>
+
+      <p><strong>Sta eens stil bij jezelf:</strong> In welke contexten gebruik jij bvb. de ZRL-vaardigheid zelfmonitoring of het bijhouden of je goed bezig bent of iets moet aanpassen in je aanpak? Doe je dat in je klas, wanneer je luistert naar een vriend, wanneer je aan het autorijden bent,....</p>
+    </div>
+  </div>
+
+  <div class="text-image-row text-image-row--right">
+    <div>
+      <p><strong>Waarom is het inzetten op die transfer nu belangrijk?</strong></p>
+      <p>Alle vorige ondersteuningsvormen leggen eigenlijk de basis voor de transfer. Doch, transfer gebeurt niet altijd automatisch.</p>
+
+      <p><strong>Drie belangrijke redenen om de transfer van ZRL-vaardigheden goed te begeleiden zijn de volgende:</strong></p>
+
+  <ol class="examples">
+  <li>
+    Leerlingen gaan aangeleerde strategieën <span class="groen">niet automatisch</span> thuis of in andere contexten ook gebruiken, terwijl dit hen in heel uiteenlopende contexten heel wat kan opleveren. (Leerpunt, 2026)
+  </li>
+
+  <li>
+    Wanneer we ZRL-vaardigheid veel gaan inoefenen dan treedt er soms onbewust een transfer op naar situaties die heel erg lijken op de oefensituatie. Het <span class="groen">gevaar</span> is echter dat men dit doet <span class="groen">zonder nadenken</span> en dus niet inziet dat het in de andere situatie net iets anders vraagt … (Peeters, 2022)
+
+    <div class="text-image-row">
+      <img src="../bewustetransferweek4.png" alt="Bewuste transfer" class="text-image-row__img text-image-row__img--small">
+      <div>
+        <p><strong>Bijvoorbeeld:</strong> de leerling heeft geleerd hoe hij een schema kan maken voor het verwerken van de les geschiedenis. De leerling past dit ook toe op het vak aardrijkskunde, waar de focus vooral ligt op het gebruik van de atlas, het interpreteren van kaarten,… Inzetten op bewuste transfer is dus belangrijk.</p>
+      </div>
+    </div>
+  </li>
+
+  <li>
+    Actief inzetten op transfer en dit ondersteunen <span class="groen">vermindert de cognitive load</span>, waardoor er meer werkgeheugen over blijft voor de inhoud. (De Bruin et al, 2025)
+  </li>
+</ol>
+    <img src="../waaromweek4.png" alt="Waarom transfer belangrijk is" class="text-image-row__img">
+  </div>
+
+
+  </div>
+
+  <div class="warning-box">
+    <h4>Noteer op een blaadje</h4>
+    <p>Waar zouden jouw leerlingen de in dit leertraject aangeleerde ZRL-vaardigheden nog kunnen gebruiken? In welk vakken of bij welk types opdrachten?</p>
+    <p>Hou dit bij voor straks in je leerdagboek.</p>
+  </div>
+</section>
+
+<section class="subsection subsection--c">
+  <p class="subsection-label">C. Transfer ondersteunen: wanneer en hoe?</p>
+
+  <p>Hoe begeleid je nu de transfer van ZRL-vaardigheden?</p>
+  <p>Griet en Nathalie leiden dit onderwerp al even in, in een nieuwe video (duurtijd: 7 minuten), deze keer niet @home/hogent maar in een andere context!</p>
+
+  <div class="image-inline">
+    <img src="../Video.jpg" alt="Video transfer week 4" class="image-inline__img visual-medium">
+    <div class="image-inline__text">
+      <a class="btn btn-space-top-lg" href="https://hogent.cloud.panopto.eu/Panopto/Pages/Viewer.aspx?id=5d3c8d07-430f-4b91-896d-b4490130bdd4" target="_blank" rel="noopener">
+        Klik hier voor de video!
+      </a>
+    </div>
+  </div>
+
+  <p>Transfer gaat dus enerzijds over <strong>zien of beseffen WANNEER je de ZRL-vaardigheden nog kan gebruiken.</strong></p>
+  <p>Daarnaast gaat het ook over <strong>bewust kiezen HOE je deze gaat inzetten</strong>, wat nadenken over taken, strategieën en jouw eigen functioneren m.b.t. deze strategieën noodzakelijk maakt.</p>
+
+  <p>We bespreken deze twee punten:</p>
+
+  <div class="text-image-row">
+    <img src="../wanneerweek4.png" alt="Wanneer transfer" class="text-image-row__img">
+    <div>
+      <p><strong>1. BEWUSTWORDING over WANNEER je de ZRL-vaardigheden NOG kan gebruiken, door</strong></p>
+
+      <ul class="checklist">
+        <li><strong>te benoemen:</strong> Benoem wanneer leerlingen een vaardigheid nog allemaal kunnen gebruiken. De leerkracht uit de strip vroeg aan de leerlingen wanneer ze deze leesstrategie nog kunnen gebruiken maar had dit ook gewoon kunnen benoemen.</li>
+        <li><strong>te triggeren:</strong> Als de leerkracht geschiedenis de leerlingen herinnert aan de leesstrategieën van Nederlands, triggert hij het transfereren van deze strategieën. Daarnaast is het bevragen van de leerlingen over wanneer, zoals in de strip, ook een manier om dit te triggeren: ‘Wanneer kan je dit nog gebruiken?’; ‘In welke andere vakken kan dit helpen?’,….</li>
+        <li><strong>Als schoolteam dezelfde taal gebruiken</strong> kan tot slot ook meer bewustwording creëren over wanneer je de ZRL vaardigheden (nog) kan inzetten. Eenzelfde visie rond ZRL en eenzelfde taal hanteren naar de leerlingen toe bevordert de transfer. ZRL ondersteunen is teamwerk! Met een team bereik je zoveel meer. (Sins, 2025; Leerpunt, 2026)</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="text-image-row text-image-row--right">
+    <div>
+      <p><strong>2. BEWUSTWORDING over HOE je de ZRL-vaardigheden NOG kan gebruiken.</strong></p>
+
+      <p>De bewustwording over de HOE vraagt om (begeleide) <strong>REFLECTIE</strong> over 3 vormen van <strong>KENNIS</strong>, namelijk</p>
+
+      <div class="reflection-cards">
+        <div class="reflection-card">
+          <h4>Taak</h4>
+          <p><strong>Kennis over taken of opdrachten:</strong><br>Bvb. Wat vraagt het studeren van Franse vocabulaire? Wat vraagt het studeren van wiskunde? Wat is er anders – en gelijk - aan een taak frans en een taak wiskunde?</p>
+        </div>
+        <div class="reflection-card">
+          <h4>Strategie</h4>
+          <p><strong>Kennis over strategieën en wanneer je deze het beste inzet:</strong><br>Bvb. Waarvoor kan je een schema gebruiken? Waarvoor gebruik je flashcards? Hoe gebruik je flashcards best als het gaat om woordjes, versus bredere concepten?</p>
+        </div>
+        <div class="reflection-card">
+          <h4>Jezelf</h4>
+          <p><strong>Kennis over jezelf:</strong><br>Wat werkt voor mij? Wanneer kan ik mij het beste concentreren? Hoe hou ik mezelf gemotiveerd tijdens wiskunde versus geschiedenis?</p>
+        </div>
+      </div>
+
+      <p><em>(Peeters, 2022; Dijkstra, 2018)</em></p>
+    </div>
+    <img src="../hoeweek4.png" alt="Hoe transfer begeleiden" class="text-image-row__img">
+  </div>
+
+  <div class="image-inline">
+    <img src="../klasweek4.jpg" alt="Klassituatie week 4" class="image-inline__img visual-medium">
+    <div class="image-inline__text">
+      <div class="centered-block">
+        <img src="../taakstrategiejezelf.png" alt="Taak strategie jezelf" class="visual-large">
+      </div>
+    </div>
+  </div>
+
+  <p>Hoe pakken we dit aan? Door leerlingen <strong>bewust te maken van de gelijkenissen en verschillen</strong> tussen taken/opdrachten en situaties, ze hierover te laten <strong>reflecteren</strong>, en te beslissen of ze deze of een andere strategie zullen inzetten.</p>
+  <p>Op die manier voorkomen we dat leerlingen automatisch een strategie of vaardigheid gaan inzetten, zonder hierover na te denken.</p>
+
+ 
+  <div class="callout">
+    <h4>Samengevat: Hoe ondersteun je de transfer?</h4>
+    <ul class="checklist">
+      <li>Maak leerlingen <span class="groen"><strong>bewust van WANNEER</strong></span> ze de ZRL-vaardigheden nog kunnen inzetten door:
+        <ul class="checklist">
+          <li>Het <strong>expliciet te zeggen</strong>: “Je kan dit nog gebruiken in de les geschiedenis…”</li>
+          <li>Eraan te <strong>herinneren</strong> of het te <strong>bevragen</strong>: “Je hebt dit in Nederlands ook gedaan….” “Waar heb je nog zoiets moeten doen?”</li>
+          <li>Als team <strong>dezelfde woordenschat</strong> rond ZRL te hanteren.</li>
+        </ul>
+      </li>
+      <li> <span class="groen"><strong>Begeleid het reflecteren rond HOE</strong></span> je deze vaardigheden in de andere context inzet door samen te reflecteren over:
+        <ul class="checklist">
+          <li><strong>De taak</strong>: heb je al eens een vergelijkbare taak moeten doen? Wat was hier hetzelfde en anders aan?</li>
+          <li><strong>De aanpak</strong>: hoe heb je dit toen aangepakt? Kunnen we dit nu ook zo doen?</li>
+          <li><strong>Zichzelf</strong>: Wat werkt/werkte al voor jou? Wanneer kon je je het best concentreren, motiveren,…?</li>
+        </ul>
+      </li>
+    </ul>
+  </div>
+</section>
+    <section id="aan-de-slag" class="card">
+      <h2>5. Aan de slag</h2>
+
+      <p>Deze week gaan we vooral in ons leerdagboek aan de slag. We denken na over hoe we de transfer kunnen aanpakken.</p>
+      <p>Daarnaast voeren we al wat transfer uit, niet het begeleiden van de transfer van onze leerlingen maar wel de transfer van wat wij geleerd en gedaan hebben naar onze collega’s en naar ons collectief.</p>
+      <p>Twee stappen dus:</p>
+
+      <ol class="examples">
+        <li><strong>Vul het leerdagboek in</strong>
+        <li>Bereid een <strong>korte terugkoppeling van jouw proces voor onze gezamenlijke vergadering</strong> voor. Hoe? Dat mag via een homevideo zijn, via enkele afbeeldingen of foto’s, via een gedicht, via een tekstje, via een schema, een tekening…. Je kiest dus zelf de vorm. Dit hoeft niet langer dan 5 minuten te zijn. In het leerdagboek geven we je enkele vragen mee om je hiervoor te inspireren.</li>
+      </ol>
+
+      <div class="image-inline">
+        <img src="../online-leerdagboek.jpg" alt="Online leerdagboek" class="image-inline__img">
+        <div class="image-inline__text">
+          <p>Leerdagboek:</p>
+          <a class="btn btn-space-top-lg" href="../Leerdagboekweek4.docx" target="_blank" rel="noopener">
+            Klik hier
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section id="vooruitblik" class="card">
+      <h2>6. Vooruitblik</h2>
+      <p>We zien elkaar op de collectieve bijeenkomst op dinsdag 26 mei, van 13u30 tot 15u30 (meer details in het vergaderverzoek)</p>
+      <p>We kijken er naar uit jullie eindelijk fysiek te kunnen ontmoeten! Heel graag tot dan!</p>
+    </section>
+
+    <footer class="footer">
+      <p class="note">© Traject ZRL – HOGENT </p>
+    </footer>
+  </main>
+
+  <script src="../assets/js/main.js"></script>
+</body>
+</html>
