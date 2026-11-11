@@ -558,5 +558,36 @@
   </main>
 
   <script src="../assets/js/main.js"></script>
+  <script>
+(function () {
+  let preview = new URLSearchParams(window.location.search)
+    .get('preview') === '1';
+
+  function showUnderConstruction() {
+    if (preview) return;
+
+    const overlay = document.createElement('div');
+    overlay.className = 'under-construction-overlay';
+
+    overlay.innerHTML = `
+      <div class="under-construction-content">
+        <h1>Under construction</h1>
+        <p>Deze pagina is momenteel nog in opbouw.</p>
+        <p>We werken volop aan het leertraject. Binnenkort vind je hier meer informatie!</p>
+      </div>
+    `;
+
+    document.body.appendChild(overlay);
+  }
+
+  showUnderConstruction();
+
+  document.addEventListener('keydown', function (event) {
+    if (event.ctrlKey && event.altKey && event.key.toLowerCase() === 'p') {
+      window.location.search = '?preview=1';
+    }
+  });
+})();
+</script>
 </body>
 </html>
