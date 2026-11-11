@@ -905,3 +905,23 @@ hr.sep{
 .leerdagboek-reminder p {
   margin: 0;
 }
+.metapro-dagboek-kader {
+  background: #f0f4f8;
+  border: 1px solid #d5e0e8;
+  border-left: 5px solid #005a8d;
+  border-radius: 6px;
+  padding: 16px 20px;
+  margin: 10px 0;
+  color: #333333;
+}
+
+.metapro-dagboek-kader strong {
+  display: block;
+  color: #005a8d;
+  margin-bottom: 8px;
+}
+
+.metapro-dagboek-kader p {
+  color: #333333;
+  margin: 0;
+}
