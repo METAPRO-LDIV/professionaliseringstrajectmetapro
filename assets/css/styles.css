@@ -925,3 +925,31 @@ hr.sep{
   color: #333333;
   margin: 0;
 }
+/* UNDER CONSTRUCTION */
+.under-construction-overlay {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  background: rgba(255, 255, 255, 0.97);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 30px;
+}
+
+.under-construction-content {
+  max-width: 500px;
+}
+
+.under-construction-content h1 {
+  color: #005a8d;
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.under-construction-content p {
+  color: #333;
+  font-size: 1.1rem;
+  line-height: 1.6;
+}
